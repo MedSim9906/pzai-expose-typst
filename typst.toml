@@ -8,9 +8,9 @@ description = "Unofficial template for PHD expose for the Promotionszentrum Ange
 repository = "https://github.com/MedSim9906/pzai-expose-typst"
 keywords = ["expose", "exposé", "proposal", "research proposal", "thesis", "outline"]
 categories = ["thesis"]
-exclude = ["examples/"]
+exclude = ["examples/*"]
 
 [template]
 path = "template"
 entrypoint = "expose.typ"
-thumbnail = "template/thumbnail.png"
+thumbnail = "thumbnail.png"

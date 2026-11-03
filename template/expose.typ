@@ -1,4 +1,4 @@
-#import "@local/pzai-expose:0.1.0": pzai-expose, universities
+#import "@preview/pzai-expose:0.1.0": pzai-expose, universities
 
 #show: pzai-expose.with(
   title: [A fancy and very good title],
