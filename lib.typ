@@ -1,11 +1,11 @@
-// pzai-expose.typ -- a Typst version of the pzai example from https://github.com/th-nuernberg/pzai-expose
+// pzai-expose-unofficial.typ -- a Typst version of the pzai example from https://github.com/th-nuernberg/pzai-expose
 //
 // Mirrors:  \documentclass[11pt, DIV=16, parskip=half]{scrartcl}
 //
 // Usage:
-// #import "pzai-expose.typ": pzai-expose
+// #import "pzai-expose-unofficial.typ": pzai-expose-unofficial
 //
-// #show: pzai-expose.with(
+// #show: pzai-expose-unofficial.with(
 //   title: [A fancy and very good title],
 //   author: [Mulmus Autorus],
 //   email: "mulmus.autorus@uni.edu",
@@ -18,6 +18,8 @@
 //   lang      "en"
 //
 
+#import "@preview/glossarium:0.5.10": gls, glspl, make-glossary, print-glossary, register-glossary
+
 #let serif-fonts = ("New Computer Modern", "Latin Modern Roman", "CMU Serif", "Libertinus Serif")
 #let sans-fonts = ("New Computer Modern Sans", "Latin Modern Sans", "CMU Sans Serif")
 
@@ -27,7 +29,7 @@
   THN: "Technische Hochschule Nürnberg Georg Simon Ohm",
 )
 
-#let pzai-expose(
+#let pzai-expose-unofficial(
   title: none,
   subtitle: none,
   author: none,
@@ -38,6 +40,7 @@
   lang: "en",
   heading-numbering: "1.1",
   university: none,
+  glossary: none,
   body,
 ) = {
   let icon = if university == universities.HM {
@@ -49,6 +52,8 @@
   } else {
     none
   }
+
+  show: if glossary != none { make-glossary } else { it => it }
 
   // Validate that the input is a valid university option
   // assert(
@@ -83,13 +88,6 @@
 
   // --- Text and paragraphs ---------------------------------------------------
   set text(font: serif-fonts, size: fontsize, lang: lang)
-
-  show link: it => text(
-    // fill: blue.darken(20%),
-    font: serif-fonts,
-    size: 1.31em,
-    it,
-  )
 
   // Typst's par.spacing is the whole gap between paragraphs (it replaces the
   // line leading there), so LaTeX's parskip is added on top of the leading.
@@ -130,6 +128,8 @@
   if title != none {
     let date-str = if date == auto {
       datetime.today().display("[month repr:long] [day padding:none], [year]")
+    } else if type(date) == datetime {
+      date.display("[month repr:long] [day padding:none], [year]")
     } else {
       date
     }
@@ -162,6 +162,11 @@
         v(0.7em)
       }
     }))
+  }
+
+  if glossary != none {
+    register-glossary(glossary)
+    print-glossary(glossary, disable-back-references: true)
   }
 
   body

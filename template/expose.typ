@@ -1,11 +1,12 @@
-#import "@preview/pzai-expose:0.1.0": pzai-expose, universities
+#import "@preview/pzai-expose-unofficial:0.1.1": pzai-expose-unofficial, universities
 
-#show: pzai-expose.with(
+#show: pzai-expose-unofficial.with(
   title: [A fancy and very good title],
   author: [Mulmus Autorus],
   email: "mulmus.autorus@uni.edu",
   paper: "a4",
   university: universities.HM,
+  glossary: entry-list,
 )
 
 = Introduction
