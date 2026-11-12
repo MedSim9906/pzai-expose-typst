@@ -1,4 +1,5 @@
 #import "@preview/pzai-expose-unofficial:0.1.1": pzai-expose-unofficial, universities
+#import "glossary.typ": entry-list
 
 #show: pzai-expose-unofficial.with(
   title: [A fancy and very good title],
@@ -7,6 +8,7 @@
   paper: "a4",
   university: universities.HM,
   glossary: entry-list,
+  bibliography: bibliography("refs.bib"),
 )
 
 = Introduction
@@ -43,5 +45,3 @@ You can think of this as work packages or milestones that you describe.
 Briefly argue why your research will lead to a Dr.-Ing. or Dr. rer. nat.
 
 Limit yourself to about 500 words, use figures, schemes, tables or itemized formatting as needed.
-
-#bibliography("refs.bib")
